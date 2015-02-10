@@ -1,0 +1,45 @@
+[rszyee@ts-ug-6 ~]$ cd BS32011/BS32011/sql
+[rszyee@ts-ug-6 sql]$ cd ../templates/
+bash: cd: ../templates/: No such file or directory
+[rszyee@ts-ug-6 sql]$ cd Templates
+bash: cd: Templates: No such file or directory
+[rszyee@ts-ug-6 sql]$ cd
+[rszyee@ts-ug-6 ~]$ cd Templates
+[rszyee@ts-ug-6 Templates]$ ls
+[rszyee@ts-ug-6 Templates]$ cd
+[rszyee@ts-ug-6 ~]$ ce templates
+bash: ce: command not found
+[rszyee@ts-ug-6 ~]$ cd templates
+bash: cd: templates: No such file or directory
+[rszyee@ts-ug-6 ~]$ cd BS32011/git
+bash: cd: BS32011/git: No such file or directory
+[rszyee@ts-ug-6 ~]$ cd BS32011/BS32011/git
+[rszyee@ts-ug-6 git]$ git pull
+remote: Counting objects: 9, done.
+remote: Compressing objects: 100% (6/6), done.
+remote: Total 9 (delta 3), reused 8 (delta 2)
+Unpacking objects: 100% (9/9), done.
+From https://github.com/DundeeUniLifeSci/BS32011
+   5f03855..6bfd77f  master     -> origin/master
+Updating 5f03855..6bfd77f
+Fast-forward
+ README.md                      | 64 ++++++++++++++++++++++++----------
+ cgi/testscript.py              | 19 ++++++++++
+ geo/models.py                  | 50 ++++++++++++++++++++++++++
+ geo/overview.md                |  8 +++--
+ geo/parser.md                  | 15 ++++++++
+ geo/readdata.py                | 67 +++++++++++++++++++++++++++++++++++
+ git_update.sh                  |  9 +++++
+ labbook.md                     | 10 ++++++
+ labmeetings/Week18/models.py   | 26 ++++++++------
+ labmeetings/Week18/readdata.py |  6 +++-
+ templates/parser_template.py   | 79 ++++++++++++++++++++++++++++++++++++++++++
+ 11 files changed, 322 insertions(+), 31 deletions(-)
+ create mode 100644 cgi/testscript.py
+ create mode 100644 geo/models.py
+ create mode 100644 geo/parser.md
+ create mode 100644 geo/readdata.py
+ create mode 100644 git_update.sh
+ create mode 100644 labbook.md
+ create mode 100644 templates/parser_template.py
+[rszyee@ts-ug-6 git]$ 

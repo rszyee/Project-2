@@ -1,0 +1,39 @@
+
+CREATE TABLE Genes (
+id integer not null primary key auto_increment,
+symbol varchar(25),
+description varchar(256)
+);
+
+LOAD DATA LOCAL INFILE 'genes.txt' INTO TABLE Genes 
+(id, symbol, description);
+
+CREATE TABLE Probes (
+id integer not null,
+FOREIGN KEY (id) REFERENCES Genes (id),
+reference INTEGER NOT NULL
+);
+
+LOAD DATA LOCAL INFILE 'probes.txt' INTO TABLE Probes 
+(id, reference);
+
+CREATE TABLE Sample (
+accession varchar(10) not null,
+experiment varchar(50) not null
+);
+
+LOAD DATA LOCAL INFILE 'Sample.txt' INTO TABLE Sample 
+(accession, experiment);
+
+CREATE TABLE Expression (
+accession integer not null,
+FOREIGN KEY (accession) REFERENCES Probe (accession),
+reference integer not null,
+FOREIGN KEY (reference) REFERENCES Probe (reference),
+length INTEGER NOT NULL
+);
+
+LOAD DATA LOCAL INFILE 'expression.txt' INTO TABLE Expression 
+(reference, accession, length);
+
+
