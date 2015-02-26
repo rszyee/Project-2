@@ -1,0 +1,12 @@
+[rszyee@ts-ug-6 ~]$ cdBS32011
+bash: cdBS32011: command not found
+[rszyee@ts-ug-6 ~]$ cd BS32011
+[rszyee@ts-ug-6 BS32011]$ ls
+21_01 python   22_01_2      BS32011  Coding 2
+21_01 python2  22_01python  Coding   Project-2
+[rszyee@ts-ug-6 BS32011]$ cd Project-2
+[rszyee@ts-ug-6 Project-2]$ cd ~
+[rszyee@ts-ug-6 ~]$ mkdir public_html
+[rszyee@ts-ug-6 ~]$ cd public_html
+[rszyee@ts-ug-6 public_html]$ nano index.html
+[rszyee@ts-ug-6 public_html]$ 

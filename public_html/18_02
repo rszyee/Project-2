@@ -1,0 +1,75 @@
+[rszyee@ts-ug-6 ~]$ cd BS32011/BS32011/cgi
+[rszyee@ts-ug-6 cgi]$ cp testscrip.py ~/public_html/cgi
+cp: cannot stat `testscrip.py': No such file or directory
+[rszyee@ts-ug-6 cgi]$ cp testscript.py ~/public_html/cgi
+[rszyee@ts-ug-6 cgi]$ more testscript.py
+#!/usr/local/bin/python
+import cgi
+import cgitb
+cgitb.enable()
+
+form = cgi.FieldStorage()
+
+print "Content-Type: text/html"     # HTML is following
+print                               # blank line, end of headers
+print "<html><head><TITLE>CGI script output</TITLE></head>"
+print "<body><H1>Form values</H1>"
+print "<table><tr><th>Key</th><th>Value</th></tr>"
+
+for k in form.keys():
+        print "<tr><td>%s</td><td>%s</td></tr>"%(k, form[k])
+
+print "<table>"
+
+print "</body></html>"
+[rszyee@ts-ug-6 cgi]$ more testscript.py
+#!/usr/local/bin/python
+import cgi
+import cgitb
+cgitb.enable()
+
+form = cgi.FieldStorage()
+
+print "Content-Type: text/html"     # HTML is following
+print                               # blank line, end of headers
+print "<html><head><TITLE>CGI script output</TITLE></head>"
+print "<body><H1>Form values</H1>"
+print "<table><tr><th>Key</th><th>Value</th></tr>"
+
+for k in form.keys():
+        print "<tr><td>%s</td><td>%s</td></tr>"%(k, form[k])
+
+print "<table>"
+
+print "</body></html>"
+[rszyee@ts-ug-6 cgi]$ more testscript.py
+#!/usr/local/bin/python
+import cgi
+import cgitb
+cgitb.enable()
+
+form = cgi.FieldStorage()
+
+print "Content-Type: text/html"     # HTML is following
+print                               # blank line, end of headers
+print "<html><head><TITLE>CGI script output</TITLE></head>"
+print "<body><H1>Form values</H1>"
+print "<table><tr><th>Key</th><th>Value</th></tr>"
+
+for k in form.keys():
+        print "<tr><td>%s</td><td>%s</td></tr>"%(k, form[k])
+
+print "<table>"
+
+print "</body></html>"
+[rszyee@ts-ug-6 cgi]$ cd public_html
+bash: cd: public_html: No such file or directory
+[rszyee@ts-ug-6 cgi]$ cd
+[rszyee@ts-ug-6 ~]$ cd public_html
+[rszyee@ts-ug-6 public_html]$ cd ~/public_html/
+[rszyee@ts-ug-6 public_html]$ ls
+11_02  cgi  form.html  index.html  studies.html  test.html
+[rszyee@ts-ug-6 public_html]$ mv cgi cgi-bin
+[rszyee@ts-ug-6 public_html]$ ls
+11_02  cgi-bin  form.html  index.html  studies.html  test.html
+[rszyee@ts-ug-6 public_html]$ 
