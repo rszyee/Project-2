@@ -1,0 +1,13 @@
+[rszyee@ts-ug-6 ~]$ cd BS32011/Project-2
+[rszyee@ts-ug-6 Project-2]$ python
+Python 2.6.6 (r266:84292, Jul 10 2013, 22:48:45) 
+[GCC 4.4.7 20120313 (Red Hat 4.4.7-3)] on linux2
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import MySQLdb
+>>> db=MySQLdb.connect(db='rszyee', user='rszyee', passwd='_8ydr_sW')
+>>> cursor=db.cursor()
+>>> cursor
+<MySQLdb.cursors.Cursor object at 0x21d5550>
+>>> cursor.execute('select count(*) from expression')
+1L
+>>> 

@@ -1,0 +1,161 @@
+[rszyee@ts-ug-6 ~]$ cd BS32011/Project-2
+[rszyee@ts-ug-6 Project-2]$ python
+Python 2.6.6 (r266:84292, Jul 10 2013, 22:48:45) 
+[GCC 4.4.7 20120313 (Red Hat 4.4.7-3)] on linux2
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import MySQLdb
+>>> db=MySQLdb.connect(db='rszyee', user='rszyee', passwd='_8ydr_sW')
+>>> cursor=db.cursor()
+>>> cursor      
+<MySQLdb.cursors.Cursor object at 0x202e550>
+>>> cursor.execute('select * from expression where expression> %s', (110000,))
+549L
+>>> cursor.execute('select * from Genes where Genes> %s', (10000,))
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/usr/lib64/python2.6/site-packages/MySQLdb/cursors.py", line 173, in execute
+    self.errorhandler(self, exc, value)
+  File "/usr/lib64/python2.6/site-packages/MySQLdb/connections.py", line 36, in defaulterrorhandler
+    raise errorclass, errorvalue
+_mysql_exceptions.OperationalError: (1054, "Unknown column 'Genes' in 'where clause'")
+>>> cursor.execute('select * from Expression where Expression> %s', (110000,))
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/usr/lib64/python2.6/site-packages/MySQLdb/cursors.py", line 173, in execute
+    self.errorhandler(self, exc, value)
+  File "/usr/lib64/python2.6/site-packages/MySQLdb/connections.py", line 36, in defaulterrorhandler
+    raise errorclass, errorvalue
+_mysql_exceptions.OperationalError: (1054, "Unknown column 'Expression' in 'where clause'")
+>>> cursor.execute('select * from Genes where description> %s', (100,))
+0L
+>>> cursor.execute('select * from Genes where description> %s', (10,))
+3L
+>>> result=cursor.fetchone()
+>>> result
+(1718L, 'DHCR24', '24-dehydrocholesterol reductase')
+>>> result=cursor.fetchone()
+>>> result=cursor.fetchone()
+>>> result
+(100289079L, 'LOC100289079', '60S ribosomal protein L36-like')
+>>> result=cursor.fetchone()
+>>> result
+>>> result=cursor.fetchone()
+>>> result
+>>> n_req=10
+>>> cursor.execute('select * from Genes where description> %s', (10,))3L
+>>> result=cursor.fetchmany(n_req)
+>>> print result
+((1718L, 'DHCR24', '24-dehydrocholesterol reductase'), (9403L, 'SEP15', '15 kDa selenoprotein'), (100289079L, 'LOC100289079', '60S ribosomal protein L36-like'))
+>>> cursor.execute('select * from Genes where description> %s order by acs', (10,))
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/usr/lib64/python2.6/site-packages/MySQLdb/cursors.py", line 173, in execute
+    self.errorhandler(self, exc, value)
+  File "/usr/lib64/python2.6/site-packages/MySQLdb/connections.py", line 36, in defaulterrorhandler
+    raise errorclass, errorvalue
+_mysql_exceptions.OperationalError: (1054, "Unknown column 'acs' in 'order clause'")
+>>> cursor.execute('select * from Genes where description> %s', (10,))3L
+>>> result=cursor.fetchmany(n_req)
+>>> print result
+((1718L, 'DHCR24', '24-dehydrocholesterol reductase'), (9403L, 'SEP15', '15 kDa selenoprotein'), (100289079L, 'LOC100289079', '60S ribosomal protein L36-like'))
+>>> cursor.execute('select * from Sample where description =rotavirus gastroenteritis')
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/usr/lib64/python2.6/site-packages/MySQLdb/cursors.py", line 173, in execute
+    self.errorhandler(self, exc, value)
+  File "/usr/lib64/python2.6/site-packages/MySQLdb/connections.py", line 36, in defaulterrorhandler
+    raise errorclass, errorvalue
+_mysql_exceptions.ProgrammingError: (1064, "You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'gastroenteritis' at line 1")
+>>> cursor.execute('select * from Sample where description = rotavirus gastroenteritis')
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/usr/lib64/python2.6/site-packages/MySQLdb/cursors.py", line 173, in execute
+    self.errorhandler(self, exc, value)
+  File "/usr/lib64/python2.6/site-packages/MySQLdb/connections.py", line 36, in defaulterrorhandler
+    raise errorclass, errorvalue
+_mysql_exceptions.ProgrammingError: (1064, "You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'gastroenteritis' at line 1")
+>>> cursor.execute('select * from Sample where experiment = rotavirus gastroenteritis')
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/usr/lib64/python2.6/site-packages/MySQLdb/cursors.py", line 173, in execute
+    self.errorhandler(self, exc, value)
+  File "/usr/lib64/python2.6/site-packages/MySQLdb/connections.py", line 36, in defaulterrorhandler
+    raise errorclass, errorvalue
+_mysql_exceptions.ProgrammingError: (1064, "You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'gastroenteritis' at line 1")
+>>> cursor.execute('select * from Sample where experiment='rotavirus gastroenteritis'')
+  File "<stdin>", line 1
+    cursor.execute('select * from Sample where experiment='rotavirus gastroenteritis'')
+                                                                   ^
+SyntaxError: invalid syntax
+>>> cursor.execute('select * from Sample where experiment > %s')
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/usr/lib64/python2.6/site-packages/MySQLdb/cursors.py", line 173, in execute
+    self.errorhandler(self, exc, value)
+  File "/usr/lib64/python2.6/site-packages/MySQLdb/connections.py", line 36, in defaulterrorhandler
+    raise errorclass, errorvalue
+_mysql_exceptions.ProgrammingError: (1064, "You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '%s' at line 1")
+>>> cursor.execute('select * from Sample')
+35L
+>>> result=cursor.fetchone()
+>>> result
+('GSM1224914', 'rotavirus gastroenteritis')
+>>> cursor.execute('select * from Sample where experiment='rotavirus gastroenteritis'')
+  File "<stdin>", line 1
+    cursor.execute('select * from Sample where experiment='rotavirus gastroenteritis'')
+                                                                   ^
+SyntaxError: invalid syntax
+>>> cursor.execute('select * from Sample where experiment= %s', (rotavirus gastroenteritis,))
+  File "<stdin>", line 1
+    cursor.execute('select * from Sample where experiment= %s', (rotavirus gastroenteritis,))
+                                                                                         ^
+SyntaxError: invalid syntax
+>>> cursor.execute('select * from Sample where experiment= %s')
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/usr/lib64/python2.6/site-packages/MySQLdb/cursors.py", line 173, in execute
+    self.errorhandler(self, exc, value)
+  File "/usr/lib64/python2.6/site-packages/MySQLdb/connections.py", line 36, in defaulterrorhandler
+    raise errorclass, errorvalue
+_mysql_exceptions.ProgrammingError: (1064, "You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '%s' at line 1")
+>>> cursor.execute('select * from Sample where experiment> %s ', (experiment,) ) 
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'experiment' is not defined
+>>> cursor.execute('select * from Sample where experiment> %s ', (rotavirus gastroenteritis,) )
+  File "<stdin>", line 1
+    cursor.execute('select * from Sample where experiment> %s ', (rotavirus gastroenteritis,) )
+                                                                                          ^
+SyntaxError: invalid syntax
+>>> cursor.execute('select * from Sample where experiment> %s ', (rotavirus gastroenteritis) )
+  File "<stdin>", line 1
+    cursor.execute('select * from Sample where experiment> %s ', (rotavirus gastroenteritis) )
+                                                                                          ^
+SyntaxError: invalid syntax
+>>> cursor.execute('select * from Sample where experiment> %s ', (rotavirus gastroenteritis,))
+  File "<stdin>", line 1
+    cursor.execute('select * from Sample where experiment> %s ', (rotavirus gastroenteritis,))
+                                                                                          ^
+SyntaxError: invalid syntax
+>>> cursor.execute('select * from Sample where experiment> %s ', (rotavirus gastroenteritis)) 
+  File "<stdin>", line 1
+    cursor.execute('select * from Sample where experiment> %s ', (rotavirus gastroenteritis))
+                                                                                          ^
+SyntaxError: invalid syntax
+>>> cursor.execute('select * from Sample where experiment=%s ', (rotavirus gastroenteritis,))
+  File "<stdin>", line 1
+    cursor.execute('select * from Sample where experiment=%s ', (rotavirus gastroenteritis,))
+                                                                                         ^
+SyntaxError: invalid syntax
+>>> cursor.execute('select * from Sample where experiment=%s ', (experiment,))Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'experiment' is not defined
+>>> cursor.execute('select * from Sample where accession=%s ', (accession,))
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'accession' is not defined
+>>> cursor.execute('select experiment from Sample where experiment=%s ', (experiment,))
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'experiment' is not defined
+>>> 
