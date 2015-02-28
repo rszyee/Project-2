@@ -1,0 +1,1 @@
+This folder contains the parser template (Parser.py) to extract the necessary information from the raw datafile. The parser was provided by Dr Martin. Upon successful extraction, three text files were created; genes.txt, probes.txt, and expression.txt. Text files Disease.txt and Experiment.txt were created manually while genes2.txt is a newer and cleaned-up version of genes.txt

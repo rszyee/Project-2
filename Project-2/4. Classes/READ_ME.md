@@ -1,0 +1,1 @@
+This folder contains the Classes.py file which would query the MySQLdb and return results in a suitable data structure. The Classes.py file was modified by the models.py template provided by Dr Martin.
