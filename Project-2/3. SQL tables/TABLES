@@ -1,0 +1,64 @@
+CREATE TABLE Genes (
+id integer not null primary key auto_increment,
+symbol varchar(25),
+title varchar(256)
+);
+-- this creates a table named Genes.
+-- id is an integer that cannot be null, it is the primary key so must be unique and if it isn't specified then we can automatically generate it by auto_increment from the previous highest value.
+-- symbol is a text field of max size 25.
+-- title is a text field of max size 50.
+
+LOAD DATA LOCAL INFILE 'genes.txt' INTO TABLE Genes 
+(id, symbol, title);
+-- the genes text file is loaded into the SQL database. 
+-- fields for the data to load into the table are specified in the brackets.
+
+
+CREATE TABLE Probes (
+reference varchar(25) not null,
+id integer not null,
+FOREIGN KEY (id) REFERENCES Genes (id)
+);
+-- this links Probes table to Genes table.
+-- this creates a table named Probes.
+-- reference is a text field of max size 25 that cannot be null.
+-- id is an integer that cannot be null.
+
+LOAD DATA LOCAL INFILE 'probes.txt' INTO TABLE Probes 
+(reference, id);
+-- the probes text file is loaded into the SQL database. 
+-- fields for the data to load into the table are specified in the brackets.
+
+
+CREATE TABLE Sample (
+accession varchar(10) not null,
+experiment varchar(50) not null
+);
+-- this creates a table named Sample.
+-- accession is a text field of max size 10 that cannot be null.
+-- experiment is a text field of max size 50 that cannot be null.
+
+LOAD DATA LOCAL INFILE 'Sample.txt' INTO TABLE Sample 
+(accession, experiment);
+-- the Sample text file is loaded into the SQL database. 
+-- fields for the data to load into the table are specified in the brackets.
+
+
+CREATE TABLE Expression (
+accession integer not null,
+FOREIGN KEY (accession) REFERENCES Sample (accession),
+-- this links Expression table to Sample table.
+reference varchar(25) not null,
+FOREIGN KEY (reference) REFERENCES Probes (reference),
+-- this links Expression table to Probes table.
+value integer not null
+);
+-- this creates a table named Expression.
+-- accession is a an integer that cannot be null.
+-- reference is a text field of max size 25 that cannot be null.
+-- value is an integer that cannot be null.
+
+LOAD DATA LOCAL INFILE 'expression.txt' INTO TABLE Expression 
+(accession, reference, value);
+-- the Sample text file is loaded into the SQL database. 
+-- fields for the data to load into the table are specified in the brackets.

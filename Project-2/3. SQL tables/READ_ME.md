@@ -1,0 +1,1 @@
+This folder contains the codes require to create tables in the SQL database as well as the functions to load the data from the created text files (Folder 2) into the tables. The SQL database enables the tables to be linked together.
