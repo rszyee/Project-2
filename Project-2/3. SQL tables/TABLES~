@@ -16,9 +16,8 @@ LOAD DATA LOCAL INFILE 'genes.txt' INTO TABLE Genes
 
 CREATE TABLE Probes (
 reference varchar(25) not null,
-id integer not null,
-FOREIGN KEY (id) REFERENCES Genes (id)
-);
+id integer not null
+FOREIGN KEY (id) REFERENCES Genes (id);
 -- this links Probes table to Genes table.
 -- this creates a table named Probes.
 -- reference is a text field of max size 25 that cannot be null.
