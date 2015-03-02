@@ -1,1 +1,0 @@
-This folder contains the webpage for this project, Webpage.html. It also contains a folder, cgi-bin which contains a file called query.py. The webpage has a form which would query for information downloaded from GEO NCBI. The query.py file helps to facilitate the transfer of data from webpage to SQL database and to return a web-suitable result to the query.
